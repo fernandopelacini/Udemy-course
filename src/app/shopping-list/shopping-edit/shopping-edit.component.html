@@ -1,0 +1,41 @@
+<div class="row">
+  <div class="col-xs-12">
+    <form (ngSubmit)="onAdded(f)" #f="ngForm">
+      <div class="row">
+        <div class="col-sm-5 form-group">
+          <label for="name">Name</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            ngModel
+            class="form-control"
+            required
+          />
+          <!-- <span class="help-block" *ngIf="!name.valid && ng.pristine">
+              Field required
+          </span> -->
+        </div>
+        <div class="col-sm-2 form-group">
+          <label for="amount">Amount</label>
+          <input
+            type="number"
+            id="amount"
+            name="amount"
+            ngModel
+            required
+            [pattern]="'^[1-9]+[0-9]*$'"
+          />
+          <!--[Pattern] es para poner regexp -->
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <button class="btn btn-success" type="submit" [disabled]="!f.valid">{{editMode ? 'Update':'Add'}} </button>
+          <button class="btn btn-danger" type="button" (click)="onDeleted()" [disabled]="!editMode" >Delete</button>
+          <button class="btn btn-primary" type="button"(click)="onClear()" >Clear</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
